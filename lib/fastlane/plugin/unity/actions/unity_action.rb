@@ -5,7 +5,28 @@ module Fastlane
   module Actions
     class UnityAction < Action
       def self.run(params)
-        UI.message("The unity plugin is working!")
+        build_cmd = "#{params[:unty_path]}"
+        build_cmd << " -projectPath \"#{params[:project_path]}\"" if params[:project_path]
+        build_cmd << " -batchmode" if params[:batchmode]
+        build_cmd << " -nographics" if params[:nographics]
+        build_cmd << " -quit" if params[:quit]
+        build_cmd << " -executeMethod \"#{params[:execute_method]}\"" if params[:execute_method]
+        build_cmd << " -logfile"
+
+        UI.message ""
+        UI.message Terminal::Table.new(
+          title: "Unity".green,
+          headings: ["Option", "Value"],
+          rows: params.values
+        )
+        UI.message ""
+
+        UI.message "Start running"
+        UI.message ""
+
+        sh build_cmd
+
+        UI.success "Finished"
       end
 
       def self.description
@@ -27,11 +48,41 @@ module Fastlane
 
       def self.available_options
         [
-          # FastlaneCore::ConfigItem.new(key: :your_option,
-          #                         env_name: "UNITY_YOUR_OPTION",
-          #                      description: "A description of your option",
-          #                         optional: false,
-          #                             type: String)
+          FastlaneCore::ConfigItem.new(key: :unty_path,
+                                       env_name: "FL_UNITY_PATH",
+                                       description: "Path to Unity executable"
+                                       type: String),
+
+          FastlaneCore::ConfigItem.new(key: :project_path,
+                                       env_name: "FL_UNITY_PROJECT_PATH",
+                                       description: "Path to Unity project",
+                                       default_value: "#{Dir.pwd}",
+                                       optional: true,
+                                       type: String),
+
+          FastlaneCore::ConfigItem.new(key: :batchmode,
+                                       env_name: "FL_UNITY_BATCHMODE",
+                                       description: "Run command in batch mode",
+                                       default_value: false,
+                                       is_string: false),
+          
+          FastlaneCore::ConfigItem.new(key: :nographics,
+                                       env_name: "FL_UNITY_NOGRAPHICS",
+                                       description: "Do not initialize the graphics device",
+                                       default_value: false,
+                                       is_string: false),
+
+          FastlaneCore::ConfigItem.new(key: :quit,
+                                       env_name: "FL_UNITY_QUIT",
+                                       description: "Quit the Unity after command execution",
+                                       default_value: false,
+                                       is_string: false),
+
+          FastlaneCore::ConfigItem.new(key: :execute_method,
+                                       env_name: "FL_UNITY_EXECUTE_METHOD",
+                                       description: "Static method to execute",
+                                       optional: true,
+                                       type: String),
         ]
       end
 

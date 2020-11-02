@@ -5,7 +5,7 @@ module Fastlane
   module Actions
     class UnityAction < Action
       def self.run(params)
-        build_cmd = "#{params[:unty_path]}"
+        build_cmd = params[:unity_path].to_s
         build_cmd << " -projectPath \"#{params[:project_path]}\"" if params[:project_path]
         build_cmd << " -batchmode" if params[:batchmode]
         build_cmd << " -nographics" if params[:nographics]
@@ -13,20 +13,11 @@ module Fastlane
         build_cmd << " -executeMethod \"#{params[:execute_method]}\"" if params[:execute_method]
         build_cmd << " -logfile"
 
-        UI.message ""
-        UI.message Terminal::Table.new(
-          title: "Unity".green,
-          headings: ["Option", "Value"],
-          rows: params.values
+        FastlaneCore::CommandExecutor.execute(
+          command: build_cmd,
+          print_all: true,
+          print_command: true
         )
-        UI.message ""
-
-        UI.message "Start running"
-        UI.message ""
-
-        sh build_cmd
-
-        UI.success "Finished"
       end
 
       def self.description
@@ -48,24 +39,22 @@ module Fastlane
 
       def self.available_options
         [
-          FastlaneCore::ConfigItem.new(key: :unty_path,
+          FastlaneCore::ConfigItem.new(key: :unity_path,
                                        env_name: "FL_UNITY_PATH",
-                                       description: "Path to Unity executable"
-                                       type: String),
+                                       description: "Path to Unity executable"),
 
           FastlaneCore::ConfigItem.new(key: :project_path,
                                        env_name: "FL_UNITY_PROJECT_PATH",
                                        description: "Path to Unity project",
-                                       default_value: "#{Dir.pwd}",
-                                       optional: true,
-                                       type: String),
+                                       default_value: Dir.pwd.to_s,
+                                       optional: true),
 
           FastlaneCore::ConfigItem.new(key: :batchmode,
                                        env_name: "FL_UNITY_BATCHMODE",
                                        description: "Run command in batch mode",
                                        default_value: false,
                                        is_string: false),
-          
+
           FastlaneCore::ConfigItem.new(key: :nographics,
                                        env_name: "FL_UNITY_NOGRAPHICS",
                                        description: "Do not initialize the graphics device",
@@ -81,8 +70,7 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :execute_method,
                                        env_name: "FL_UNITY_EXECUTE_METHOD",
                                        description: "Static method to execute",
-                                       optional: true,
-                                       type: String),
+                                       optional: true)
         ]
       end
 

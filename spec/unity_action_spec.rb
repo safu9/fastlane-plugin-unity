@@ -1,9 +1,13 @@
 describe Fastlane::Actions::UnityAction do
   describe '#run' do
-    it 'prints a message' do
-      expect(Fastlane::UI).to receive(:message).with("The unity plugin is working!")
+    it 'exec a command' do
+      expect(FastlaneCore::CommandExecutor).to receive(:execute).with(
+        command: "/path/to/unity -logfile",
+        print_all: true,
+        print_command: true
+      )
 
-      Fastlane::Actions::UnityAction.run(nil)
+      Fastlane::Actions::UnityAction.run({ unity_path: '/path/to/unity' })
     end
   end
 end

@@ -11,18 +11,18 @@ module Fastlane
           UI.user_error!("Cannot find path to unity executable!")
         end
 
-        build_cmd = "\"#{unity_path}\""
-        build_cmd << " -projectPath \"#{params[:project_path]}\"" if params[:project_path]
-        build_cmd << " -batchmode" if params[:batchmode]
-        build_cmd << " -nographics" if params[:nographics]
-        build_cmd << " -quit" if params[:quit]
-        build_cmd << " -username #{params[:username]}" if params[:username]
-        build_cmd << " -password #{params[:password]}" if params[:password]
-        build_cmd << " -executeMethod #{params[:execute_method]}" if params[:execute_method]
-        build_cmd << " -logfile"
+        cmd = "\"#{unity_path}\""
+        cmd << " -projectPath \"#{params[:project_path]}\"" if params[:project_path]
+        cmd << " -batchmode" if params[:batchmode]
+        cmd << " -nographics" if params[:nographics]
+        cmd << " -quit" if params[:quit]
+        cmd << " -username #{params[:username]}" if params[:username]
+        cmd << " -password #{params[:password]}" if params[:password]
+        cmd << " -executeMethod #{params[:execute_method]}" if params[:execute_method]
+        cmd << " -logfile"
 
         FastlaneCore::CommandExecutor.execute(
-          command: build_cmd,
+          command: cmd,
           print_all: true,
           print_command: true
         )

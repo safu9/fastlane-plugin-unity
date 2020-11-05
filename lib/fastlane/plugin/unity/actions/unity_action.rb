@@ -16,6 +16,8 @@ module Fastlane
         build_cmd << " -batchmode" if params[:batchmode]
         build_cmd << " -nographics" if params[:nographics]
         build_cmd << " -quit" if params[:quit]
+        build_cmd << " -username #{params[:username]}" if params[:username]
+        build_cmd << " -password #{params[:password]}" if params[:password]
         build_cmd << " -executeMethod #{params[:execute_method]}" if params[:execute_method]
         build_cmd << " -logfile"
 
@@ -78,6 +80,16 @@ module Fastlane
                                        description: "Quit the Unity after command execution",
                                        default_value: false,
                                        is_string: false),
+
+          FastlaneCore::ConfigItem.new(key: :username,
+                                       env_name: "FL_UNITY_USERNAME",
+                                       description: "Username to log in",
+                                       optional: true),
+
+          FastlaneCore::ConfigItem.new(key: :password,
+                                       env_name: "FL_UNITY_PASSWORD",
+                                       description: "Password to log in",
+                                       optional: true),
 
           FastlaneCore::ConfigItem.new(key: :execute_method,
                                        env_name: "FL_UNITY_EXECUTE_METHOD",

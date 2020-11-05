@@ -20,6 +20,7 @@ module Fastlane
         cmd << " -password #{params[:password]}" if params[:password]
         cmd << " -executeMethod #{params[:execute_method]}" if params[:execute_method]
         cmd << " -logfile"
+        cmd << " #{params[:extra_args]}" if params[:extra_args]
 
         FastlaneCore::CommandExecutor.execute(
           command: cmd,
@@ -94,6 +95,11 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :execute_method,
                                        env_name: "FL_UNITY_EXECUTE_METHOD",
                                        description: "Static method to execute",
+                                       optional: true),
+
+          FastlaneCore::ConfigItem.new(key: :extra_args,
+                                       env_name: "FL_UNITY_EXTRA_ARGS",
+                                       description: "Extra arguments",
                                        optional: true)
         ]
       end

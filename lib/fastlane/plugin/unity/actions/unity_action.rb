@@ -5,12 +5,18 @@ module Fastlane
   module Actions
     class UnityAction < Action
       def self.run(params)
-        build_cmd = params[:unity_path].to_s
+        unity_path = params[:unity_path]
+        unity_path = Helper::UnityHelper.find_unity_path(params[:unity_version]) unless unity_path
+        unless unity_path
+          UI.user_error!("Cannot find path to unity executable!")
+        end
+
+        build_cmd = "\"#{unity_path}\""
         build_cmd << " -projectPath \"#{params[:project_path]}\"" if params[:project_path]
         build_cmd << " -batchmode" if params[:batchmode]
         build_cmd << " -nographics" if params[:nographics]
         build_cmd << " -quit" if params[:quit]
-        build_cmd << " -executeMethod \"#{params[:execute_method]}\"" if params[:execute_method]
+        build_cmd << " -executeMethod #{params[:execute_method]}" if params[:execute_method]
         build_cmd << " -logfile"
 
         FastlaneCore::CommandExecutor.execute(
@@ -41,7 +47,13 @@ module Fastlane
         [
           FastlaneCore::ConfigItem.new(key: :unity_path,
                                        env_name: "FL_UNITY_PATH",
-                                       description: "Path to Unity executable"),
+                                       description: "Path to Unity executable",
+                                       optional: true),
+
+          FastlaneCore::ConfigItem.new(key: :unity_version,
+                                       env_name: "FL_UNITY_VERSION",
+                                       description: "Unity version to execute",
+                                       optional: true),
 
           FastlaneCore::ConfigItem.new(key: :project_path,
                                        env_name: "FL_UNITY_PROJECT_PATH",

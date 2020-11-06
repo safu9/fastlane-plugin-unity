@@ -6,7 +6,16 @@ Gemfile.lock
 /_yardoc/
 /doc/
 /rdoc/
+
+## Fastlane
 fastlane/README.md
 fastlane/report.xml
+
+## Test
 coverage
 test-results
+
+## Environment normalization:
+/.bundle/
+/vendor/bundle
+/lib/bundler/man/

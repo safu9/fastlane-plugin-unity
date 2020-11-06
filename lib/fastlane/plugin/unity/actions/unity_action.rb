@@ -67,19 +67,19 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :batchmode,
                                        env_name: "FL_UNITY_BATCHMODE",
                                        description: "Run command in batch mode",
-                                       default_value: false,
+                                       default_value: true,
                                        is_string: false),
 
           FastlaneCore::ConfigItem.new(key: :nographics,
                                        env_name: "FL_UNITY_NOGRAPHICS",
                                        description: "Do not initialize the graphics device",
-                                       default_value: false,
+                                       default_value: true,
                                        is_string: false),
 
           FastlaneCore::ConfigItem.new(key: :quit,
                                        env_name: "FL_UNITY_QUIT",
                                        description: "Quit the Unity after command execution",
-                                       default_value: false,
+                                       default_value: true,
                                        is_string: false),
 
           FastlaneCore::ConfigItem.new(key: :username,

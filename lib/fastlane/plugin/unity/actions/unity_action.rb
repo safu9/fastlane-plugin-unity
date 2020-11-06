@@ -18,6 +18,7 @@ module Fastlane
         cmd << " -quit" if params[:quit]
         cmd << " -username #{params[:username]}" if params[:username]
         cmd << " -password #{params[:password]}" if params[:password]
+        cmd << " -buildTarget #{params[:build_target]}" if params[:build_target]
         cmd << " -executeMethod #{params[:execute_method]}" if params[:execute_method]
         cmd << " -logfile"
         cmd << " #{params[:extra_args]}" if params[:extra_args]
@@ -90,6 +91,11 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :password,
                                        env_name: "FL_UNITY_PASSWORD",
                                        description: "Password to log in",
+                                       optional: true),
+
+          FastlaneCore::ConfigItem.new(key: :build_target,
+                                       env_name: "FL_UNITY_BUILD_TARGET",
+                                       description: "Active build target",
                                        optional: true),
 
           FastlaneCore::ConfigItem.new(key: :execute_method,

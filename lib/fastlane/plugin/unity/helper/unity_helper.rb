@@ -31,7 +31,7 @@ module Fastlane
           paths << "~/Unity/Hub/Editor/#{unity_version}/Editor/Unity" if unity_version
         end
 
-        return paths.find(&:File.exist?)
+        return paths.find { |path| File.exist?(path) }
       end
     end
   end

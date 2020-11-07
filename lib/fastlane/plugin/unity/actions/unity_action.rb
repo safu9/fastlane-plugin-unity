@@ -52,12 +52,14 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :unity_path,
                                        env_name: "FL_UNITY_PATH",
                                        description: "Path to Unity executable",
-                                       optional: true),
+                                       optional: true,
+                                       conflicting_options: [:unity_version]),
 
           FastlaneCore::ConfigItem.new(key: :unity_version,
                                        env_name: "FL_UNITY_VERSION",
                                        description: "Unity version to execute",
-                                       optional: true),
+                                       optional: true,
+                                       conflicting_options: [:unity_path]),
 
           FastlaneCore::ConfigItem.new(key: :project_path,
                                        env_name: "FL_UNITY_PROJECT_PATH",

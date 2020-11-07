@@ -1,6 +1,8 @@
 # unity plugin
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-unity)
+[![Gem](https://img.shields.io/gem/v/fastlane-plugin-unity)](https://rubygems.org/gems/fastlane-plugin-unity)
+[![Test](https://github.com/safu9/fastlane-plugin-unity/workflows/Test/badge.svg)](https://github.com/safu9/fastlane-plugin-unity/actions?query=workflow%3ATest)
 
 ## Getting Started
 

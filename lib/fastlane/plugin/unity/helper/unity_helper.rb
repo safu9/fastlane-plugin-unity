@@ -9,9 +9,6 @@ module Fastlane
       # class methods that you define here become available in your action
       # as `Helper::UnityHelper.your_method`
       #
-      def self.show_message
-        UI.message("Hello from the unity plugin helper!")
-      end
 
       def self.find_unity_path(unity_version)
         paths = []

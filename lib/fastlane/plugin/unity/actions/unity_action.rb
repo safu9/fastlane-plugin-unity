@@ -20,6 +20,13 @@ module Fastlane
         cmd << " -password #{params[:password]}" if params[:password]
         cmd << " -buildTarget #{params[:build_target]}" if params[:build_target]
         cmd << " -executeMethod #{params[:execute_method]}" if params[:execute_method]
+
+        cmd << " -EnableCacheServer #{params[:enable_cache_server]}" if params[:enable_cache_server]
+        cmd << " -cacheServerEndpoint #{params[:cache_server_endpoint]}" if params[:cache_server_endpoint]
+        cmd << " -cacheServerNamespacePrefix #{params[:cache_server_namespace_prefix]}" if params[:cache_server_namespace_prefix]
+        cmd << " -cacheServerEnableDownload #{params[:cache_server_enable_download]}" unless params[:cache_server_enable_download].nil?
+        cmd << " -cacheServerEnableUpload #{params[:cache_server_enable_upload]}" unless params[:cache_server_enable_upload].nil?
+
         cmd << " -logfile"
         cmd << " #{params[:extra_args]}" if params[:extra_args]
 
@@ -104,6 +111,32 @@ module Fastlane
                                        env_name: "FL_UNITY_EXECUTE_METHOD",
                                        description: "Static method to execute",
                                        optional: true),
+
+          FastlaneCore::ConfigItem.new(key: :enable_cache_server,
+                                       env_name: "FL_UNITY_ENABLE_CACHE_SERVER",
+                                       description: "Enable usage of Accelerator Cache Server",
+                                       default_value: false,
+                                       is_string: false),
+
+          FastlaneCore::ConfigItem.new(key: :cache_server_endpoint,
+                                       env_name: "FL_UNITY_CACHE_SERVER_ENDPOINT",
+                                       description: "Endpoint address of Accelerator Cache Server",
+                                       optional: true),
+
+          FastlaneCore::ConfigItem.new(key: :cache_server_namespace_prefix,
+                                       env_name: "FL_UNITY_CACHE_SERVER_NAMESPACE_PREFIX",
+                                       description: "Namespace prefix for Accelerator Cache Server",
+                                       optional: true),
+
+          FastlaneCore::ConfigItem.new(key: :cache_server_enable_download,
+                                       env_name: "FL_UNITY_CACHE_SERVER_ENABLE_DOWNLOAD",
+                                       description: "Enable downloading from Accelerator Cache Server",
+                                       is_string: false),
+
+          FastlaneCore::ConfigItem.new(key: :cache_server_enable_upload,
+                                       env_name: "FL_UNITY_CACHE_SERVER_ENABLE_UPLOAD",
+                                       description: "Enable uploading to Accelerator Cache Server",
+                                       is_string: false),
 
           FastlaneCore::ConfigItem.new(key: :extra_args,
                                        env_name: "FL_UNITY_EXTRA_ARGS",

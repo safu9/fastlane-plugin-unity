@@ -131,11 +131,15 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :cache_server_enable_download,
                                        env_name: "FL_UNITY_CACHE_SERVER_ENABLE_DOWNLOAD",
                                        description: "Enable downloading from Accelerator Cache Server",
+                                       optional: true,
+                                       default_value: nil,
                                        is_string: false),
 
           FastlaneCore::ConfigItem.new(key: :cache_server_enable_upload,
                                        env_name: "FL_UNITY_CACHE_SERVER_ENABLE_UPLOAD",
                                        description: "Enable uploading to Accelerator Cache Server",
+                                       optional: true,
+                                       default_value: nil,
                                        is_string: false),
 
           FastlaneCore::ConfigItem.new(key: :extra_args,

@@ -21,7 +21,7 @@ module Fastlane
         cmd << " -buildTarget #{params[:build_target]}" if params[:build_target]
         cmd << " -executeMethod #{params[:execute_method]}" if params[:execute_method]
 
-        cmd << " -EnableCacheServer #{params[:enable_cache_server]}" if params[:enable_cache_server]
+        cmd << " -adb2 -EnableCacheServer" if params[:enable_cache_server]
         cmd << " -cacheServerEndpoint #{params[:cache_server_endpoint]}" if params[:cache_server_endpoint]
         cmd << " -cacheServerNamespacePrefix #{params[:cache_server_namespace_prefix]}" if params[:cache_server_namespace_prefix]
         cmd << " -cacheServerEnableDownload #{params[:cache_server_enable_download]}" unless params[:cache_server_enable_download].nil?

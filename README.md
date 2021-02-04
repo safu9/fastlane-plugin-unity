@@ -34,24 +34,24 @@ This plugin determine path to Unity executable in the following order
 
 ### Supported options
 
-| Name                          | Description                                      | Default     | Env Var Name                           |
-|-------------------------------|--------------------------------------------------|-------------|----------------------------------------|
-| unity_path                    | Path to Unity executable                         |             | FL_UNITY_PATH                          |
-| unity_version                 | Unity version to execute                         |             | FL_UNITY_VERSION                       |
-| project_path                  | Path to Unity project                            | Current Dir | FL_UNITY_PROJECT_PATH                  |
-| batchmode                     | Run command in batch mode                        | true        | FL_UNITY_BATCHMODE                     |
-| nographics                    | Do not initialize the graphics device            | true        | FL_UNITY_NOGRAPHICS                    |
-| quit                          | Quit the Unity after command execution           | true        | FL_UNITY_QUIT                          |
-| username                      | Username to log in                               |             | FL_UNITY_USERNAME                      |
-| password                      | Password to log in                               |             | FL_UNITY_PASSWORD                      |
-| build_target                  | Active build target like "iOS" or "Android"      |             | FL_UNITY_BUILD_TARGET                  |
-| execute_method                | Static method to execute                         |             | FL_UNITY_EXECUTE_METHOD                |
-| enable_cache_server           | Enable usage of Accelerator Cache Server         |             | FL_UNITY_ENABLE_CACHE_SERVER           |
-| cache_server_endpoint         | Endpoint address of Accelerator Cache Server     |             | FL_UNITY_CACHE_SERVER_ENDPOINT         |
-| cache_server_namespace_prefix | Namespace prefix for Accelerator Cache Server    |             | FL_UNITY_CACHE_SERVER_NAMESPACE_PREFIX |
-| cache_server_enable_download  | Enable downloading from Accelerator Cache Server |             | FL_UNITY_CACHE_SERVER_ENABLE_DOWNLOAD  |
-| cache_server_enable_upload    | Enable uploading to Accelerator Cache Server     |             | FL_UNITY_CACHE_SERVER_ENABLE_UPLOAD    |
-| extra_args                    | Extra arguments                                  |             | FL_UNITY_EXTRA_ARGS                    |
+| Name <br/> Env Var Name                                                    | Description                                      | Default     |
+|----------------------------------------------------------------------------|--------------------------------------------------|-------------|
+| unity_path <br/> FL_UNITY_PATH                                             | Path to Unity executable                         |             |
+| unity_version <br/> FL_UNITY_VERSION                                       | Unity version to execute                         |             |
+| project_path <br/> FL_UNITY_PROJECT_PATH                                   | Path to Unity project                            | Current Dir |
+| batchmode <br/> FL_UNITY_BATCHMODE                                         | Run command in batch mode                        | true        |
+| nographics <br/> FL_UNITY_NOGRAPHICS                                       | Do not initialize the graphics device            | true        |
+| quit <br/> FL_UNITY_QUIT                                                   | Quit the Unity after command execution           | true        |
+| username <br/> FL_UNITY_USERNAME                                           | Username to log in                               |             |
+| password <br/> FL_UNITY_PASSWORD                                           | Password to log in                               |             |
+| build_target <br/> FL_UNITY_BUILD_TARGET                                   | Active build target like "iOS" or "Android"      |             |
+| execute_method <br/> FL_UNITY_EXECUTE_METHOD                               | Static method to execute                         |             |
+| enable_cache_server <br/> FL_UNITY_ENABLE_CACHE_SERVER                     | Enable usage of Accelerator Cache Server         |             |
+| cache_server_endpoint <br/> FL_UNITY_CACHE_SERVER_ENDPOINT                 | Endpoint address of Accelerator Cache Server     |             |
+| cache_server_namespace_prefix <br/> FL_UNITY_CACHE_SERVER_NAMESPACE_PREFIX | Namespace prefix for Accelerator Cache Server    |             |
+| cache_server_enable_download <br/> FL_UNITY_CACHE_SERVER_ENABLE_DOWNLOAD   | Enable downloading from Accelerator Cache Server |             |
+| cache_server_enable_upload <br/> FL_UNITY_CACHE_SERVER_ENABLE_UPLOAD       | Enable uploading to Accelerator Cache Server     |             |
+| extra_args <br/> FL_UNITY_EXTRA_ARGS                                       | Extra arguments                                  |             |
 
 See manual for detailed descriptions and other options: https://docs.unity3d.com/Manual/CommandLineArguments.html
 

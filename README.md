@@ -44,6 +44,7 @@ This plugin determine path to Unity executable in the following order
 | batchmode <br/> FL_UNITY_BATCHMODE                                         | Run command in batch mode                        | true        |
 | nographics <br/> FL_UNITY_NOGRAPHICS                                       | Do not initialize the graphics device            | true        |
 | quit <br/> FL_UNITY_QUIT                                                   | Quit the Unity after command execution           | true        |
+| logfile <br/> FL_UNITY_LOGFILE                                             | Path to output log file                          | - (Console) |
 | username <br/> FL_UNITY_USERNAME                                           | Username to log in                               |             |
 | password <br/> FL_UNITY_PASSWORD                                           | Password to log in                               |             |
 | build_target <br/> FL_UNITY_BUILD_TARGET                                   | Active build target like "iOS" or "Android"      |             |

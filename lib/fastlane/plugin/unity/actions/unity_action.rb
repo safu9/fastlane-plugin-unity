@@ -14,8 +14,13 @@ module Fastlane
         cmd << ' -batchmode' if params[:batchmode]
         cmd << ' -nographics' if params[:nographics]
         cmd << ' -quit' if params[:quit]
+
+        cmd << ' -logfile -' if params[:logfile] == '-'
+        cmd << " -logfile \"#{params[:logfile]}\"" if params[:logfile] && params[:logfile] != '-'
+
         cmd << " -username #{params[:username]}" if params[:username]
         cmd << " -password #{params[:password]}" if params[:password]
+
         cmd << " -buildTarget #{params[:build_target]}" if params[:build_target]
         cmd << " -executeMethod #{params[:execute_method]}" if params[:execute_method]
 
@@ -25,7 +30,6 @@ module Fastlane
         cmd << " -cacheServerEnableDownload #{params[:cache_server_enable_download]}" unless params[:cache_server_enable_download].nil?
         cmd << " -cacheServerEnableUpload #{params[:cache_server_enable_upload]}" unless params[:cache_server_enable_upload].nil?
 
-        cmd << ' -logfile -'
         cmd << " #{params[:extra_args]}" if params[:extra_args]
 
         FastlaneCore::CommandExecutor.execute(
@@ -100,6 +104,14 @@ module Fastlane
             description: 'Quit the Unity after command execution',
             default_value: true,
             is_string: false
+          ),
+
+          FastlaneCore::ConfigItem.new(
+            key: :logfile,
+            env_name: 'FL_UNITY_LOGFILE',
+            description: 'Path to output log file (Default is console)',
+            optional: true,
+            default_value: '-'
           ),
 
           FastlaneCore::ConfigItem.new(

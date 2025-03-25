@@ -19,6 +19,7 @@ Execute unity in command line from fastlane
 
 ```ruby
 unity(
+    unity_version: "6000.0.43f1",
     build_target: "Android",
     execute_method: "ClassName.MethodName",
     extra_args: "-arg1 -arg2"
@@ -28,8 +29,9 @@ unity(
 This plugin determine path to Unity executable in the following order
 
 1. `unity_path` option
-1. Path used in [Unity docker image](https://gitlab.com/gableroux/unity3d)
+1. Path used in docker image [gableroux/unity3d](https://gitlab.com/gableroux/unity3d) (only in docker)
 1. Default path in Unity Hub with `unity_version` option
+1. Default Path of in [install-unity](https://github.com/sttz/install-unity) with `unity_version` option
 1. Default path of standalone installation
 
 ### Supported options
@@ -51,7 +53,7 @@ This plugin determine path to Unity executable in the following order
 | cache_server_namespace_prefix <br/> FL_UNITY_CACHE_SERVER_NAMESPACE_PREFIX | Namespace prefix for Accelerator Cache Server    |             |
 | cache_server_enable_download <br/> FL_UNITY_CACHE_SERVER_ENABLE_DOWNLOAD   | Enable downloading from Accelerator Cache Server |             |
 | cache_server_enable_upload <br/> FL_UNITY_CACHE_SERVER_ENABLE_UPLOAD       | Enable uploading to Accelerator Cache Server     |             |
-| extra_args <br/> FL_UNITY_EXTRA_ARGS                                       | Extra arguments                                  |             |
+| extra_args <br/> FL_UNITY_EXTRA_ARGS                                       | Extra arguments to pass to Unity                 |             |
 
 See manual for detailed descriptions and other options: https://docs.unity3d.com/Manual/CommandLineArguments.html
 

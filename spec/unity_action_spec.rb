@@ -2,7 +2,7 @@ describe Fastlane::Actions::UnityAction do
   describe '#run' do
     it 'exec a command' do
       expect(FastlaneCore::CommandExecutor).to receive(:execute).with(
-        command: "\"/path/to/unity\" -logfile",
+        command: "\"/path/to/unity\" -logfile -",
         print_all: true,
         print_command: true
       )
@@ -14,7 +14,7 @@ describe Fastlane::Actions::UnityAction do
       allow(Fastlane::Helper::UnityHelper).to receive(:find_unity_path).and_return("/path/to/found/unity")
 
       expect(FastlaneCore::CommandExecutor).to receive(:execute).with(
-        command: "\"/path/to/found/unity\" -logfile",
+        command: "\"/path/to/found/unity\" -logfile -",
         print_all: true,
         print_command: true
       )
